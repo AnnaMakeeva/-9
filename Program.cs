@@ -20,11 +20,26 @@ namespace Задание_9._1
            Console.WriteLine("2-вычитание ");
            Console.WriteLine("3-произведение ");
            Console.WriteLine("4-частное ");
-            int n = Convert.ToByte(Console.ReadLine());
-           
+            
+            
+            int n = Convert.ToInt32(Console.ReadLine());
+            
+            try
+            {
+                 Console.WriteLine($"Результат: {n}");
+            }
+            catch
+            {
+                throw new ArgumentException("Нет операции с указанным номером");
+            }
+            
+            
+
 
             switch (n)
             {
+
+
                 case 1:
                     {
                        Console.WriteLine("Ваш выбор 1: ");
@@ -51,7 +66,20 @@ namespace Задание_9._1
                     case 4:
                     {
                         Console.WriteLine("Ваш выбор 4: ");
-                        Console.WriteLine(x / y);
+                        
+                        try
+                        {
+                            Console.WriteLine(x / y);
+                        }
+                        catch (DivideByZeroException ex)
+                        {
+                            Console.WriteLine("Ошибка! {0}", ex.Message);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+
 
                     }
 
@@ -60,15 +88,14 @@ namespace Задание_9._1
 
                     default:
                     Console.WriteLine("Вы ввели неверное значение");
+
                     break;
 
             }
-
-
-
-
+            
             Console.ReadKey();
         }
-}
     }
+}
+    
            
